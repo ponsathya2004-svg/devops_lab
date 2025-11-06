@@ -2,11 +2,15 @@ trigger:
 - main   # runs on changes pushed to main branch
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
   name: "windows pool"
 
 steps:
-- checkout: self
-- script:  echo "Running on my self-hosted agent!"
+- task: UseJavaVersion@0
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
 
+- script: mvn -B clean install
+  displayName: 'Run Maven Build'
 
