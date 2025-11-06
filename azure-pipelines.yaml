@@ -3,7 +3,10 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  name: "windows pool"
 
 steps:
-- script: echo "Hello Azure Pipeline! Your setup works 🎉"
-  displayName: 'Run Hello World script'
+- checkout: self
+- script:  echo "Running on my self-hosted agent!"
+
+
