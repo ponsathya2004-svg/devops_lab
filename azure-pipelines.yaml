@@ -6,11 +6,7 @@ pool:
   name: "windows pool"
 
 steps:
-- task: UseJavaVersion@0
-  inputs:
-    versionSpec: '11'
-    jdkArchitectureOption: 'x64'
-
-- script: mvn -B clean install
-  displayName: 'Run Maven Build'
+- checkout: self
+- script: echo "Running on my self-hosted agent!"
+- script: mvn clean install
 
